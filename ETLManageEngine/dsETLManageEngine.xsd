@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsETLManageEngine" targetNamespace="http://tempuri.org/dsETLManageEngine.xsd" xmlns:mstns="http://tempuri.org/dsETLManageEngine.xsd" xmlns="http://tempuri.org/dsETLManageEngine.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="qryFactUtilization" GeneratorFunctionsComponentClassName="qryFactUtilization" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="qryFactUtilization" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ETLManageEngineConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ETLManageEngineConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ETLManageEngine.Properties.Settings.GlobalReference.Default.ETLManageEngineConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dimAttributeTableAdapter" GeneratorDataComponentClassName="dimAttributeTableAdapter" Name="dimAttribute" UserDataComponentName="dimAttributeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="ETLManageEngine.ServerUtilization.dimAttribute" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select
+            distinct
+	a.AttributeId
+	, a.AttributeName
+	, a.ResourceId
+	, a.Unit
+	, a.AttributeStatus
+from ServerUtilization.dimAttribute a
+inner join ServerUtilization.dimResources b
+	on a.ResourceId = b.ResourceId
+where a.AttributeStatus = 2
+and b.ResourceStatus = 2
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="AttributeId" DataSetColumn="AttributeId" />
+              <Mapping SourceColumn="AttributeName" DataSetColumn="AttributeName" />
+              <Mapping SourceColumn="ResourceId" DataSetColumn="ResourceId" />
+              <Mapping SourceColumn="Unit" DataSetColumn="Unit" />
+              <Mapping SourceColumn="AttributeStatus" DataSetColumn="AttributeStatus" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ServerVariablesTableAdapter" GeneratorDataComponentClassName="ServerVariablesTableAdapter" Name="ServerVariables" UserDataComponentName="ServerVariablesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="ETLManageEngine.dbo.ServerVariables" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT [ServerId]
+      ,[ServerHostName]
+      ,[ServerIPAddress]
+      ,[ServerPortNo]
+      ,[ServerAPIKey]
+  FROM [dbo].[ServerVariables]
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ServerId" DataSetColumn="ServerId" />
+              <Mapping SourceColumn="ServerHostName" DataSetColumn="ServerHostName" />
+              <Mapping SourceColumn="ServerIPAddress" DataSetColumn="ServerIPAddress" />
+              <Mapping SourceColumn="ServerPortNo" DataSetColumn="ServerPortNo" />
+              <Mapping SourceColumn="ServerAPIKey" DataSetColumn="ServerAPIKey" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="TruncateTempFactUtilization" MethodsParameterType="CLR" Modifier="Public" Name="TruncateTempFactUtilization" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="TruncateTempFactUtilization">
+            <DeleteCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>truncate table ServerUtilization.tempfactUtilization</CommandText>
+                <Parameters />
+              </DbCommand>
+            </DeleteCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryTempFactUtilization" MethodsParameterType="CLR" Modifier="Public" Name="InsertQueryTempFactUtilization" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertQueryTempFactUtilization">
+            <InsertCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>INSERT INTO [ServerUtilization].[tempfactUtilization]
+           ([ArchivedTime]
+           ,[factMeasures]
+           ,[AttributeId]
+           ,[ResourceId]
+           ,[FullDate])
+     VALUES
+           (@ArchivedTime
+           ,@factMeasures
+           ,@AttributeId
+           ,@ResourceId
+           ,@FullDate)
+</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="ArchivedTime" ColumnName="ArchivedTime" DataSourceName="ETLManageEngine.ServerUtilization.tempfactUtilization" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@ArchivedTime" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="ArchivedTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="factMeasures" ColumnName="factMeasures" DataSourceName="ETLManageEngine.ServerUtilization.tempfactUtilization" DataTypeServer="numeric(18, 0)" DbType="Decimal" Direction="Input" ParameterName="@factMeasures" Precision="18" ProviderType="Decimal" Scale="0" Size="9" SourceColumn="factMeasures" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="AttributeId" ColumnName="AttributeId" DataSourceName="ETLManageEngine.ServerUtilization.tempfactUtilization" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@AttributeId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="AttributeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="ResourceId" ColumnName="ResourceId" DataSourceName="ETLManageEngine.ServerUtilization.tempfactUtilization" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ResourceId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ResourceId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="FullDate" ColumnName="FullDate" DataSourceName="ETLManageEngine.ServerUtilization.tempfactUtilization" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@FullDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FullDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </InsertCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteQueryFactUtilization" MethodsParameterType="CLR" Modifier="Public" Name="DeleteQueryFactUtilization" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DeleteQueryFactUtilization">
+            <DeleteCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>delete 
+from ServerUtilization.factUtilization
+where FullDate &gt; CONVERT(VARCHAR(10),DATEADD(dd,-1,GETDATE()),120)
+</CommandText>
+                <Parameters />
+              </DbCommand>
+            </DeleteCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryFactUtilization" MethodsParameterType="CLR" Modifier="Public" Name="InsertQueryFactUtilization" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="InsertQueryFactUtilization">
+            <InsertCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>insert into ServerUtilization.factUtilization
+select 
+	ArchivedTime
+	, factMeasures
+	, AttributeId
+	, ResourceId
+	, FullDate
+from ServerUtilization.tempfactUtilization
+--where FullDate &gt;= CONVERT(VARCHAR(10),DATEADD(dd,-1,GETDATE()),120)
+--and FullDate &lt; CONVERT(VARCHAR(10),DATEADD(dd,0,GETDATE()),120)
+</CommandText>
+                <Parameters />
+              </DbCommand>
+            </InsertCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryDimAttribute" MethodsParameterType="CLR" Modifier="Public" Name="InsertQueryDimAttribute" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="InsertQueryDimAttribute">
+            <InsertCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>INSERT INTO ServerUtilization.dimAttribute
+SELECT [AttributeId] 
+	  ,[ResourceId]
+      ,[AttributeName]
+      ,[Unit]
+      ,0
+      ,null
+  FROM [ServerUtilization].[tempAttribute]
+WHERE [ServerUtilization].[tempAttribute].[ResourceId] 
+	not in (select b.ResourceId from ServerUtilization.dimAttribute b)
+AND [ServerUtilization].[tempAttribute].[AttributeId] 
+	not in (select b.AttributeId from ServerUtilization.dimAttribute b)
+</CommandText>
+                <Parameters />
+              </DbCommand>
+            </InsertCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryDimResources" MethodsParameterType="CLR" Modifier="Public" Name="InsertQueryDimResources" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="InsertQueryDimResources">
+            <InsertCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>INSERT INTO ServerUtilization.dimResources
+SELECT [ResourceId]
+      ,[ResourceName]
+      ,[ResourceDisplayName]
+      ,[ResourceType]
+      ,[TypeShortName]
+      ,[ResourceParent]
+      ,0
+  FROM [ServerUtilization].[tempResources]
+WHERE [ServerUtilization].[tempResources].[ResourceId] 
+	not in (select b.ResourceId from ServerUtilization.dimResources b)
+</CommandText>
+                <Parameters />
+              </DbCommand>
+            </InsertCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="TruncateTempResources" MethodsParameterType="CLR" Modifier="Public" Name="TruncateTempResources" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="TruncateTempResources">
+            <DeleteCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>truncate table ServerUtilization.tempResources;
+</CommandText>
+                <Parameters />
+              </DbCommand>
+            </DeleteCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="TruncateTempAttribute" MethodsParameterType="CLR" Modifier="Public" Name="TruncateTempAttribute" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy7" UserSourceName="TruncateTempAttribute">
+            <DeleteCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>truncate table ServerUtilization.tempAttribute</CommandText>
+                <Parameters />
+              </DbCommand>
+            </DeleteCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryTempResources" MethodsParameterType="CLR" Modifier="Public" Name="InsertQueryTempResources" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy8" UserSourceName="InsertQueryTempResources">
+            <InsertCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>INSERT INTO [ServerUtilization].[tempResources]
+           ([ResourceId]
+           ,[ResourceName]
+           ,[ResourceDisplayName]
+           ,[ResourceType])
+     VALUES
+           (@ResourceId
+           ,@ResourceName
+           ,@ResourceDisplayName
+           ,@ResourceType)
+</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="false" AutogeneratedName="ResourceId" ColumnName="ResourceId" DataSourceName="ETLManageEngine.ServerUtilization.tempResources" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ResourceId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ResourceId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="ResourceName" ColumnName="ResourceName" DataSourceName="ETLManageEngine.ServerUtilization.tempResources" DataTypeServer="nvarchar(150)" DbType="String" Direction="Input" ParameterName="@ResourceName" Precision="0" ProviderType="NVarChar" Scale="0" Size="150" SourceColumn="ResourceName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="ResourceDisplayName" ColumnName="ResourceDisplayName" DataSourceName="ETLManageEngine.ServerUtilization.tempResources" DataTypeServer="nvarchar(150)" DbType="String" Direction="Input" ParameterName="@ResourceDisplayName" Precision="0" ProviderType="NVarChar" Scale="0" Size="150" SourceColumn="ResourceDisplayName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="ResourceType" ColumnName="ResourceType" DataSourceName="ETLManageEngine.ServerUtilization.tempResources" DataTypeServer="nvarchar(150)" DbType="String" Direction="Input" ParameterName="@ResourceType" Precision="0" ProviderType="NVarChar" Scale="0" Size="150" SourceColumn="ResourceType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </InsertCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryTempAttribute" MethodsParameterType="CLR" Modifier="Public" Name="InsertQueryTempAttribute" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy9" UserSourceName="InsertQueryTempAttribute">
+            <InsertCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>INSERT INTO [ServerUtilization].[tempAttribute]
+           ([AttributeId]
+           ,[AttributeName]
+           ,[Unit]
+           ,[ResourceId])
+     VALUES
+           (@AttributeId
+           ,@AttributeName
+           ,@Unit
+           ,@ResourceId)
+</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="false" AutogeneratedName="AttributeId" ColumnName="AttributeId" DataSourceName="ETLManageEngine.ServerUtilization.tempAttribute" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@AttributeId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="AttributeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="AttributeName" ColumnName="AttributeName" DataSourceName="ETLManageEngine.ServerUtilization.tempAttribute" DataTypeServer="nvarchar(150)" DbType="String" Direction="Input" ParameterName="@AttributeName" Precision="0" ProviderType="NVarChar" Scale="0" Size="150" SourceColumn="AttributeName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="Unit" ColumnName="Unit" DataSourceName="ETLManageEngine.ServerUtilization.tempAttribute" DataTypeServer="nvarchar(25)" DbType="String" Direction="Input" ParameterName="@Unit" Precision="0" ProviderType="NVarChar" Scale="0" Size="25" SourceColumn="Unit" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="false" AutogeneratedName="ResourceId" ColumnName="ResourceId" DataSourceName="ETLManageEngine.ServerUtilization.tempAttribute" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ResourceId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ResourceId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </InsertCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="TruncateDimServerGroup" MethodsParameterType="CLR" Modifier="Public" Name="TruncateDimServerGroup" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy10" UserSourceName="TruncateDimServerGroup">
+            <DeleteCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>truncate table ServerUtilization.dimServerGroup</CommandText>
+                <Parameters />
+              </DbCommand>
+            </DeleteCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQueryDimServerGroup" MethodsParameterType="CLR" Modifier="Public" Name="InsertQueryDimServerGroup" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy11" UserSourceName="InsertQueryDimServerGroup">
+            <InsertCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>INSERT INTO [ServerUtilization].[dimServerGroup]
+           ([GroupName]
+           ,[ResourceId])
+     VALUES
+           (@GroupName
+           ,@ResourceId)
+</CommandText>
+                <Parameters>
+                  <Parameter AllowDbNull="true" AutogeneratedName="GroupName" ColumnName="GroupName" DataSourceName="ETLManageEngine.ServerUtilization.dimServerGroup" DataTypeServer="nvarchar(250)" DbType="String" Direction="Input" ParameterName="@GroupName" Precision="0" ProviderType="NVarChar" Scale="0" Size="250" SourceColumn="GroupName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                  <Parameter AllowDbNull="true" AutogeneratedName="ResourceId" ColumnName="ResourceId" DataSourceName="ETLManageEngine.ServerUtilization.dimServerGroup" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ResourceId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ResourceId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                </Parameters>
+              </DbCommand>
+            </InsertCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarQueryCountTempResources" MethodsParameterType="CLR" Modifier="Public" Name="ScalarQueryCountTempResources" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy12" UserSourceName="ScalarQueryCountTempResources">
+            <SelectCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>SELECT count(*)
+  FROM [ServerUtilization].[tempResources]
+WHERE [ServerUtilization].[tempResources].[ResourceId] 
+	not in (select b.ResourceId from ServerUtilization.dimResources b)
+</CommandText>
+                <Parameters />
+              </DbCommand>
+            </SelectCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQueryDimResources" MethodsParameterType="CLR" Modifier="Public" Name="UpdateQueryDimResources" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy13" UserSourceName="UpdateQueryDimResources">
+            <UpdateCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>update ServerUtilization.dimResources
+set ResourceName = b.ResourceName,
+	ResourceDisplayName = b.ResourceDisplayName,
+	ResourceType = b.ResourceType
+from ServerUtilization.dimResources a
+	inner join ServerUtilization.tempResources b on a.ResourceId = b.ResourceId
+where a.ResourceName &lt;&gt; b.ResourceName
+or a.ResourceDisplayName &lt;&gt; b.ResourceDisplayName
+or a.ResourceType &lt;&gt; b.ResourceType</CommandText>
+                <Parameters />
+              </DbCommand>
+            </UpdateCommand>
+          </DbSource>
+          <DbSource ConnectionRef="ETLManageEngineConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateQueryDimAttribute" MethodsParameterType="CLR" Modifier="Public" Name="UpdateQueryDimAttribute" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy14" UserSourceName="UpdateQueryDimAttribute">
+            <UpdateCommand>
+              <DbCommand CommandType="Text" ModifiedByUser="true">
+                <CommandText>update ServerUtilization.dimAttribute
+set AttributeName = b.AttributeName,
+	Unit = b.Unit
+from ServerUtilization.dimAttribute a
+	inner join ServerUtilization.tempAttribute b on a.ResourceId = b.ResourceId and a.AttributeId = b.AttributeId
+where a.AttributeName &lt;&gt; b.AttributeName
+or a.Unit &lt;&gt; b.Unit</CommandText>
+                <Parameters />
+              </DbCommand>
+            </UpdateCommand>
+          </DbSource>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsETLManageEngine" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsETLManageEngine" msprop:Generator_UserDSName="dsETLManageEngine">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dimAttribute" msprop:Generator_TableClassName="dimAttributeDataTable" msprop:Generator_TableVarName="tabledimAttribute" msprop:Generator_RowChangedName="dimAttributeRowChanged" msprop:Generator_TablePropName="dimAttribute" msprop:Generator_RowDeletingName="dimAttributeRowDeleting" msprop:Generator_RowChangingName="dimAttributeRowChanging" msprop:Generator_RowEvHandlerName="dimAttributeRowChangeEventHandler" msprop:Generator_RowDeletedName="dimAttributeRowDeleted" msprop:Generator_RowClassName="dimAttributeRow" msprop:Generator_UserTableName="dimAttribute" msprop:Generator_RowEvArgName="dimAttributeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AttributeId" msprop:Generator_ColumnVarNameInTable="columnAttributeId" msprop:Generator_ColumnPropNameInRow="AttributeId" msprop:Generator_ColumnPropNameInTable="AttributeIdColumn" msprop:Generator_UserColumnName="AttributeId" type="xs:int" />
+              <xs:element name="AttributeName" msprop:Generator_ColumnVarNameInTable="columnAttributeName" msprop:Generator_ColumnPropNameInRow="AttributeName" msprop:Generator_ColumnPropNameInTable="AttributeNameColumn" msprop:Generator_UserColumnName="AttributeName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ResourceId" msprop:Generator_ColumnVarNameInTable="columnResourceId" msprop:Generator_ColumnPropNameInRow="ResourceId" msprop:Generator_ColumnPropNameInTable="ResourceIdColumn" msprop:Generator_UserColumnName="ResourceId" type="xs:int" />
+              <xs:element name="Unit" msprop:Generator_ColumnVarNameInTable="columnUnit" msprop:Generator_ColumnPropNameInRow="Unit" msprop:Generator_ColumnPropNameInTable="UnitColumn" msprop:Generator_UserColumnName="Unit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AttributeStatus" msprop:Generator_ColumnVarNameInTable="columnAttributeStatus" msprop:Generator_ColumnPropNameInRow="AttributeStatus" msprop:Generator_ColumnPropNameInTable="AttributeStatusColumn" msprop:Generator_UserColumnName="AttributeStatus" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ServerVariables" msprop:Generator_TableClassName="ServerVariablesDataTable" msprop:Generator_TableVarName="tableServerVariables" msprop:Generator_RowChangedName="ServerVariablesRowChanged" msprop:Generator_TablePropName="ServerVariables" msprop:Generator_RowDeletingName="ServerVariablesRowDeleting" msprop:Generator_RowChangingName="ServerVariablesRowChanging" msprop:Generator_RowEvHandlerName="ServerVariablesRowChangeEventHandler" msprop:Generator_RowDeletedName="ServerVariablesRowDeleted" msprop:Generator_RowClassName="ServerVariablesRow" msprop:Generator_UserTableName="ServerVariables" msprop:Generator_RowEvArgName="ServerVariablesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ServerId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnServerId" msprop:Generator_ColumnPropNameInRow="ServerId" msprop:Generator_ColumnPropNameInTable="ServerIdColumn" msprop:Generator_UserColumnName="ServerId" type="xs:int" />
+              <xs:element name="ServerHostName" msprop:Generator_ColumnVarNameInTable="columnServerHostName" msprop:Generator_ColumnPropNameInRow="ServerHostName" msprop:Generator_ColumnPropNameInTable="ServerHostNameColumn" msprop:Generator_UserColumnName="ServerHostName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ServerIPAddress" msprop:Generator_ColumnVarNameInTable="columnServerIPAddress" msprop:Generator_ColumnPropNameInRow="ServerIPAddress" msprop:Generator_ColumnPropNameInTable="ServerIPAddressColumn" msprop:Generator_UserColumnName="ServerIPAddress" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ServerPortNo" msprop:Generator_ColumnVarNameInTable="columnServerPortNo" msprop:Generator_ColumnPropNameInRow="ServerPortNo" msprop:Generator_ColumnPropNameInTable="ServerPortNoColumn" msprop:Generator_UserColumnName="ServerPortNo" type="xs:int" minOccurs="0" />
+              <xs:element name="ServerAPIKey" msprop:Generator_ColumnVarNameInTable="columnServerAPIKey" msprop:Generator_ColumnPropNameInRow="ServerAPIKey" msprop:Generator_ColumnPropNameInTable="ServerAPIKeyColumn" msprop:Generator_UserColumnName="ServerAPIKey" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:dimAttribute" />
+      <xs:field xpath="mstns:AttributeId" />
+      <xs:field xpath="mstns:ResourceId" />
+    </xs:unique>
+    <xs:unique name="ServerVariables_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ServerVariables" />
+      <xs:field xpath="mstns:ServerId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

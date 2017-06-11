@@ -1,0 +1,6 @@
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManPerformanceServer\bin\Debug\ETLAppManPerformanceServer.exe.config
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManPerformanceServer\bin\Debug\ETLAppManPerformanceServer.exe
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManPerformanceServer\bin\Debug\ETLAppManPerformanceServer.pdb
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManPerformanceServer\obj\Debug\ETLAppManPerformanceServer.csprojResolveAssemblyReference.cache
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManPerformanceServer\obj\Debug\ETLAppManPerformanceServer.exe
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManPerformanceServer\obj\Debug\ETLAppManPerformanceServer.pdb

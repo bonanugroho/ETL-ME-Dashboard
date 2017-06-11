@@ -1,0 +1,6 @@
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\TestingServerUtils\bin\Debug\TestingServerUtils.exe.config
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\TestingServerUtils\bin\Debug\TestingServerUtils.exe
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\TestingServerUtils\bin\Debug\TestingServerUtils.pdb
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\TestingServerUtils\obj\Debug\TestingServerUtils.csprojResolveAssemblyReference.cache
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\TestingServerUtils\obj\Debug\TestingServerUtils.exe
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\TestingServerUtils\obj\Debug\TestingServerUtils.pdb

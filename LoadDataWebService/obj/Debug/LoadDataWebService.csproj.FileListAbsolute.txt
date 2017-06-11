@@ -1,0 +1,9 @@
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\LoadDataWebService\bin\Debug\LoadDataWebService.exe.config
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\LoadDataWebService\bin\Debug\LoadDataWebService.exe
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\LoadDataWebService\bin\Debug\LoadDataWebService.pdb
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\LoadDataWebService\obj\Debug\LoadDataWebService.csprojResolveAssemblyReference.cache
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\LoadDataWebService\obj\Debug\LoadDataWebService.Form1.resources
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\LoadDataWebService\obj\Debug\LoadDataWebService.Properties.Resources.resources
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\LoadDataWebService\obj\Debug\LoadDataWebService.csproj.GenerateResource.Cache
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\LoadDataWebService\obj\Debug\LoadDataWebService.exe
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\LoadDataWebService\obj\Debug\LoadDataWebService.pdb

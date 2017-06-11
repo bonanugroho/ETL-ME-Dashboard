@@ -1,0 +1,6 @@
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\Dashboards\bin\Dashboards.dll.config
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\Dashboards\bin\Dashboards.dll
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\Dashboards\bin\Dashboards.pdb
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\Dashboards\obj\Debug\Dashboards.dll.licenses
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\Dashboards\obj\Debug\Dashboards.dll
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\Dashboards\obj\Debug\Dashboards.pdb

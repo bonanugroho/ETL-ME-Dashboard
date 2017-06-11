@@ -1,0 +1,6 @@
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManGetListMonitorGroupDetails\bin\Debug\ETLAppManGetListMonitorGroupDetails.exe.config
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManGetListMonitorGroupDetails\obj\Debug\ETLAppManGetListMonitorGroupDetails.csprojResolveAssemblyReference.cache
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManGetListMonitorGroupDetails\bin\Debug\ETLAppManGetListMonitorGroupDetails.exe
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManGetListMonitorGroupDetails\bin\Debug\ETLAppManGetListMonitorGroupDetails.pdb
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManGetListMonitorGroupDetails\obj\Debug\ETLAppManGetListMonitorGroupDetails.exe
+E:\Users\bona.nugroho\Documents\Visual Studio 2013\Projects\ETLManageEngine\ETLAppManGetListMonitorGroupDetails\obj\Debug\ETLAppManGetListMonitorGroupDetails.pdb

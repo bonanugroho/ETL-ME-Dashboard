@@ -1,0 +1,142 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dashboards.master.cs" Inherits="Dashboards.Dashboards" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxNavBar" TagPrefix="dx" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <!-- Bootstrap Core CSS -->
+    <link href="Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                        <p>
+                            <div class="btn-group pull-left">
+                                <button class="btn btn-info" type="button">Report Server Utilization</button>
+                            </div>
+                        </p>
+                    
+                </div>
+                <div class="navbar-right">
+                    <p>
+                        <div class="btn-group pull-right">
+                            <dx:ASPxButton ID="btnName" runat="server" Text="Welcome, ..." 
+                                CssClass="btn btn-xs btn-info" Visible="False" >
+                            </dx:ASPxButton> 
+                            &nbsp;
+                            <dx:ASPxButton ID="btnLogOut" runat="server" Text="Log Out" 
+                                CssClass="btn btn-xs btn-danger" onclick="btnLogOut_Click" Visible="False" >
+                            </dx:ASPxButton> 
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+
+            <div class="col-sm-2 col-md-3">
+                
+                <img src="../Content/images/BII_logo.png"></img>
+                <br />
+                <br />
+
+
+
+
+                <dx:ASPxNavBar ID="nvbMenu" runat="server" EnableTheming="True" 
+                    Theme="Office2010Blue" AutoCollapse="True" EnableAnimation="True" 
+                    CssClass="panel-group">
+                    <Groups>
+                        <dx:NavBarGroup Text="Settings" Expanded="False" >
+                            <HeaderImage IconID="programming_ide_16x16">
+                            </HeaderImage>
+
+                            <Items>
+                                <dx:NavBarItem NavigateUrl="~/SysVar/ServerVariables.aspx" Text="System Variables">
+                                    <image iconid="programming_project_16x16">
+                                    </image>
+                                </dx:NavBarItem>
+                                <dx:NavBarItem NavigateUrl="~/SysVar/ListOfMonitors.aspx" Text="List Of Servers">
+                                    <image iconid="navigation_documentmap_16x16">
+                                    </image>
+                                </dx:NavBarItem>
+                                <dx:NavBarItem NavigateUrl="~/SysVar/RefreshServerAttributeList.aspx" Text="Refresh Server Attribute">
+                                    <image iconid="people_assigntome_16x16">
+                                    </image>
+                                </dx:NavBarItem>
+                                <dx:NavBarItem Text="User Management" Visible="False">
+                                    <image iconid="people_publicfix_16x16">
+                                    </image>
+                                </dx:NavBarItem>
+                            </Items>
+
+                        </dx:NavBarGroup>
+                        <dx:NavBarGroup Text="Laporan">
+                            <Items>
+                                <dx:NavBarItem Text="Pivot Server Utilization" NavigateUrl="~/ServerUtilityPivot.aspx">
+                                    <Image IconID="chart_kpi_16x16">
+                                    </Image>
+                                </dx:NavBarItem>
+                                <dx:NavBarItem Text="Network Utilization" NavigateUrl="~/NetworkUtility.aspx">
+                                    <Image IconID="navigation_documentmap_16x16">
+                                    </Image>
+                                </dx:NavBarItem>
+                            </Items>
+                            <HeaderImage IconID="chart_area_16x16">
+                            </HeaderImage>
+                        </dx:NavBarGroup>
+                    </Groups>
+                </dx:ASPxNavBar>
+                                
+
+            </div>
+
+            <div class="col-sm-8 col-md-9">
+
+
+                <asp:ContentPlaceHolder ID="cpContentTop" runat="server">
+        
+                </asp:ContentPlaceHolder>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <center>
+                    <h5 class="form-signin-heading" style="color:#E34848"> 
+                    <%--<i style="font-style:italic; color:#E34848; margin-right:10px;">--%>
+                    &copy; 2015 PT Bank International Indonesia, Tbk<%--</i>--%>
+                    </h5>
+                    <h6 class="form-signin-heading"> 
+                    Powered by <i style="font-style:italic; color:#e67e22; margin-right:10px;">VisioNet</i>
+                    </h6>
+                </center>
+            </div>
+        </div>
+        
+    </form>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="Content/js/jquery.js"></script>
+    <script src="Content/js/bootstrap.js"></script>
+    <script src="Content/js/docs.js"></script>
+
+</body>
+</html>
+
